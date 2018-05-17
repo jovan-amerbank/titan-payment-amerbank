@@ -16,7 +16,7 @@ Documentation here
 
 Replace this with right url.
 
-For code coverage report click [HERE](http://htmlpreview.github.io/?https://github.com/vforv/hemera-service-fw/blob/master/coverage/index.html)
+For code coverage report click [HERE](http://htmlpreview.github.io/?https://github.com/jovan-amerbank/titan-payment-amerbank/blob/master/coverage/index.html)
 
 ## Env variables
 
