@@ -20,38 +20,38 @@ export class CreateActionService {
     })
     public createAction(msg?: any, done?: any) {
 
+        // this.hemera.instance.act({
+        //     topic: 'fedwire',
+        //     cmd: 'read',
+        //     data: {
+        //         id: msg.data.paymentId
+        //     }
+        // }, (err: any, response: any) => {
+        //     console.log(err, response)
+        //     /* istanbul ignore if  */
+        //     if (err) {
+        //         return done(err);
+        //     }
+
         this.hemera.instance.act({
-            topic: 'fedwire',
-            cmd: 'read',
-            data: {
-                id: msg.data.fedwirePaymentId
-            }
+            topic: STORE,
+            cmd: 'create',
+            collection: COLLECTION,
+            data: msg.data,
         }, (err: any, response: any) => {
-            console.log(err, response)
             /* istanbul ignore if  */
             if (err) {
                 return done(err);
             }
 
-            return this.hemera.instance.act({
-                topic: STORE,
-                cmd: 'create',
-                collection: COLLECTION,
-                data: msg.data,
-            }, (err: any, response: any) => {
-                /* istanbul ignore if  */
-                if (err) {
-                    return done(err);
-                }
-
-                const merged = mongoResponse({
-                    ...msg.data,
-                    ...response,
-                });
-
-                return done(null, merged);
+            const merged = mongoResponse({
+                ...msg.data,
+                ...response,
             });
-        })
+
+            return done(null, merged);
+        });
+        // })
 
 
     }

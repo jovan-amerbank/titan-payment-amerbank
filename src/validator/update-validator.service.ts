@@ -14,7 +14,7 @@ export class UpdateValidatorService {
             {
                 id: this.hemera.joi.string().required(),
 
-                fedwirePaymentId: this.hemera.joi.string().required(),
+                paymentId: this.hemera.joi.string().required(),
 
                 originatorAddressLine1: this.hemera.joi.string().required(),
                 originatorAddressLine2: this.hemera.joi.string().required(),

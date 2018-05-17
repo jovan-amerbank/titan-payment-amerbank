@@ -5,7 +5,7 @@ import * as Hemera from 'nats-hemera';
 const expect = chai.expect;
 
 const testData: any = {
-    fedwirePaymentId: '5afd8f505546c25915c12a81',
+    paymentId: '5afd8f505546c25915c12a81',
 
     originatorAddressLine1: 'originator address 1',
     originatorAddressLine2: 'originator address 2',
@@ -78,7 +78,7 @@ describe('Test for creating new entity', function () {
 
             }
         }, (error: any, resp: any) => {
-            expect(error.message).to.be.equals('child "data" fails because [child "fedwirePaymentId" fails because ["fedwirePaymentId" is required]]')
+            expect(error.message).to.be.equals('child "data" fails because [child "paymentId" fails because ["paymentId" is required]]')
             done();
         })
     });
@@ -89,7 +89,7 @@ describe('Test for creating new entity', function () {
             cmd: 'create',
             data: testData
         }, (err: any, resp: any) => {
-            expect(resp.fedwirePaymentId).to.be.equals('5afd8f505546c25915c12a81');
+            expect(resp.paymentId).to.be.equals('5afd8f505546c25915c12a81');
             expect(resp.id).to.exist;
             done();
         })

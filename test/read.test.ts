@@ -5,7 +5,7 @@ import * as Hemera from 'nats-hemera';
 const expect = chai.expect;
 
 const testData: any = {
-    fedwirePaymentId: '5afd8f505546c25915c12a81',
+    paymentId: '5afd8f505546c25915c12a81',
 
     originatorAddressLine1: 'originator address 1',
     originatorAddressLine2: 'originator address 2',
@@ -98,7 +98,7 @@ describe('Test for reading entity', function () {
             cmd: 'read',
             data: { id: entity.id }
         }, (err: any, resp: any) => {
-            expect(resp.fedwirePaymentId).to.be.equals('5afd8f505546c25915c12a81');
+            expect(resp.paymentId).to.be.equals('5afd8f505546c25915c12a81');
             expect(resp.id).to.exist;
             done();
         })

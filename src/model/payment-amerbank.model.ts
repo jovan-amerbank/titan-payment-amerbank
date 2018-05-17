@@ -3,7 +3,7 @@ import { StringSchema, NumberSchema } from 'nats-hemera';
 export interface IPaymentAmerbankModel {
     id?: StringSchema;
 
-    fedwirePaymentId: StringSchema
+    paymentId: StringSchema
 
     originatorAddressLine1: StringSchema;
     originatorAddressLine2: StringSchema;
