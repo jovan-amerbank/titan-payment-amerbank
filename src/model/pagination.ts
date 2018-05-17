@@ -1,6 +1,6 @@
-import { NumberSchema, StringSchema } from 'joi';
+import { NumberSchema } from 'joi';
 
 export interface IPagination {
     limit: NumberSchema;
-    lastId: StringSchema;
+    offset: NumberSchema;
 }
