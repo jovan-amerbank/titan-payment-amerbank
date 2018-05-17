@@ -43,14 +43,21 @@ const testData: any = {
 
 let hemera: Hemera;
 
-describe('Test for creating new entity', function () {
+describe('Test for pagination', function () {
 
     before((done) => {
         const boot = new Boot();
         boot.instance()
             .then((instance: any) => {
                 hemera = instance;
-                done();
+
+                hemera.act({
+                    topic: 'payment-amerbank',
+                    cmd: 'create',
+                    data: testData
+                }, (err: any, resp: any) => {
+                    done();
+                });
             })
             .catch((error: any) => {
 
@@ -66,31 +73,30 @@ describe('Test for creating new entity', function () {
     it('Validation works', (done) => {
         hemera.act({
             topic: 'payment-amerbank',
-            cmd: 'create',
+            cmd: 'pagination',
         }, (error: any, resp: any) => {
             expect(error.message).to.be.equals('child "data" fails because ["data" is required]')
         })
 
         hemera.act({
             topic: 'payment-amerbank',
-            cmd: 'create',
+            cmd: 'pagination',
             data: {
 
             }
         }, (error: any, resp: any) => {
-            expect(error.message).to.be.equals('child "data" fails because [child "fedwirePaymentId" fails because ["fedwirePaymentId" is required]]')
+            expect(error.message).to.be.equals('child "data" fails because [child "offset" fails because ["offset" is required]]')
             done();
         })
     });
 
-    it('Create new entity', (done) => {
+    it('Pagination', (done) => {
         hemera.act({
             topic: 'payment-amerbank',
-            cmd: 'create',
-            data: testData
+            cmd: 'pagination',
+            data: { offset: 0 }
         }, (err: any, resp: any) => {
-            expect(resp.fedwirePaymentId).to.be.equals('5afd8f505546c25915c12a81');
-            expect(resp.id).to.exist;
+            expect(resp.result).to.exist;
             done();
         })
     });

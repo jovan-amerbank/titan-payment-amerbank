@@ -5,7 +5,7 @@ import * as Hemera from 'nats-hemera';
 const expect = chai.expect;
 
 const testData: any = {
-    fedwirePaymentId: '123456789',
+    fedwirePaymentId: '5afd8f505546c25915c12a81',
 
     originatorAddressLine1: 'originator address 1',
     originatorAddressLine2: 'originator address 2',
